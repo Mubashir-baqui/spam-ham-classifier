@@ -1,11 +1,11 @@
 import streamlit as st
 import joblib
 
-# Load model and vectorizer
+
 model = joblib.load("spam_classifier.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
-# --- Custom HTML/CSS ---
+
 st.set_page_config(page_title="SPAM/HAM Classifier", layout="centered")
 
 st.markdown("""
@@ -27,18 +27,17 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- Sidebar ---
 st.sidebar.title("📌 Navigation")
 st.sidebar.markdown("Use this app to detect if a message is **SPAM** or **HAM**.")
 
-# --- Main Title ---
+
 st.markdown('<p class="main-title">📩 SPAM / HAM Classifier</p>', unsafe_allow_html=True)
 
-# --- Input Section ---
+
 st.subheader("Enter an SMS message:")
 user_input = st.text_area("Write your message here", height=100)
 
-# --- Prediction ---
+
 if st.button("🔍 Classify Message"):
     if user_input.strip() == "":
         st.warning("Please enter a message before classifying.")
